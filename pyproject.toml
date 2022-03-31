@@ -16,7 +16,7 @@ stripe = "^2.65.0"
 
 [tool.poetry.dev-dependencies]
 # Forge includes pytest, black, etc.
-forge = {git = "https://github.com/django-forge/forge.git"}
+forge1 = "^0.1.0"
 
 
 [build-system]

@@ -183,35 +183,28 @@ optional = false
 python-versions = "*"
 
 [[package]]
-name = "forge"
-version = "0.0.0"
+name = "forge1"
+version = "0.1.0"
 description = "Quickly build a professional web app using Django."
 category = "dev"
 optional = false
-python-versions = "^3.8"
-develop = false
+python-versions = ">=3.8,<4.0"
 
 [package.dependencies]
-black = "^22.1.0"
-click = "^8.1.0"
-dj-database-url = "^0.5.0"
-Django = "^4.0"
-django-widget-tweaks = "^1.4.12"
-gunicorn = "^20.1.0"
+black = ">=22.1.0,<23.0.0"
+click = ">=8.1.0,<9.0.0"
+dj-database-url = ">=0.5.0,<0.6.0"
+Django = ">=4.0,<5.0"
+django-widget-tweaks = ">=1.4.12,<2.0.0"
+gunicorn = ">=20.1.0,<21.0.0"
 honcho = "1.1.0"
-ipdb = "^0.13.9"
-isort = "^5.10.1"
-psycopg2-binary = "^2.9.2"
-pytest = "^7.0.0"
-pytest-django = "^4.5.2"
-python-dotenv = "^0.19.2"
-whitenoise = "^6.0.0"
-
-[package.source]
-type = "git"
-url = "https://github.com/django-forge/forge.git"
-reference = "master"
-resolved_reference = "114666a33561e5b7f89df7c32fd7b9171617f13a"
+ipdb = ">=0.13.9,<0.14.0"
+isort = ">=5.10.1,<6.0.0"
+psycopg2-binary = ">=2.9.2,<3.0.0"
+pytest = ">=7.0.0,<8.0.0"
+pytest-django = ">=4.5.2,<5.0.0"
+python-dotenv = ">=0.19.2,<0.20.0"
+whitenoise = ">=6.0.0,<7.0.0"
 
 [[package]]
 name = "gunicorn"
@@ -708,7 +701,7 @@ brotli = ["brotli"]
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.8"
-content-hash = "74422f22ba179acba6e2d40a1689eada26d4168d15a2950bbc90bac3f62cc0f7"
+content-hash = "92649689c285ed11b3aa460b90ca8baf647a3765cdf8128b4b07c886997b9e4d"
 
 [metadata.files]
 appnope = [
@@ -814,7 +807,10 @@ executing = [
     {file = "executing-0.8.3-py2.py3-none-any.whl", hash = "sha256:d1eef132db1b83649a3905ca6dd8897f71ac6f8cac79a7e58a1a09cf137546c9"},
     {file = "executing-0.8.3.tar.gz", hash = "sha256:c6554e21c6b060590a6d3be4b82fb78f8f0194d809de5ea7df1c093763311501"},
 ]
-forge = []
+forge1 = [
+    {file = "forge1-0.1.0-py3-none-any.whl", hash = "sha256:4b8b2f4e7a6aaa0dccb32991ad403f211ca8050fc02fca1a28ce33aac70368e1"},
+    {file = "forge1-0.1.0.tar.gz", hash = "sha256:805a6d6627151b64cb93c791223b95dab82b8fcd14f31ca1709d716781058971"},
+]
 gunicorn = [
     {file = "gunicorn-20.1.0-py3-none-any.whl", hash = "sha256:9dcc4547dbb1cb284accfb15ab5667a0e5d1881cc443e0677b4882a4067a807e"},
     {file = "gunicorn-20.1.0.tar.gz", hash = "sha256:e0a968b5ba15f8a328fdfd7ab1fcb5af4470c28aaf7e55df02a99bc13138e6e8"},
