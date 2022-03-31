@@ -12,15 +12,10 @@ class StaffToolbarLink:
             self.url = url
 
 
-DEFAULT_LINKS = [
-    StaffToolbarLink(text="Admin", url="admin:index"),
-]
-
-
 class StaffToolbar:
     def __init__(self, *, request):
         # Callable or list of StaffToolbarLink
-        self.links = getattr(settings, "STAFFTOOLBAR_LINKS", DEFAULT_LINKS)
+        self.links = settings.STAFFTOOLBAR_LINKS
 
         if callable(self.links):
             self.links = self.links(request)

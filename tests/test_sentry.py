@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.views.generic import TemplateView
 
-from forge.templatetags.sentry import sentry_js
+from forgepro.sentry.templatetags.sentry import sentry_js
 
 SENTRY_TEST_DSN = "https://publickey@1.ingest.sentry.io/1"
 
@@ -10,7 +10,7 @@ def test_sentry_tag(settings, rf):
     settings.SENTRY_DSN = SENTRY_TEST_DSN
     settings.SENTRY_JS_ENABLED = True
 
-    view = TemplateView.as_view(template_name="forge_base.html")
+    view = TemplateView.as_view(template_name="base.html")
     request = rf.get("/")
     response = view(request)
     response.render()

@@ -3,21 +3,21 @@ name = "forge-pro"
 version = "0.0.0"
 authors = ["Dave Gaeddert <dave.gaeddert@dropseed.dev>"]
 readme = "README.md"
-
-[tool.pytest.ini_options]
-# django_debug_mode = "keep"
-DJANGO_SETTINGS_MODULE = "tests.settings"
-# FAIL_INVALID_TEMPLATE_VARS = true
-# django_find_project = false
-
-[tool.poetry.scripts]
-forge = "forge.cli:cli"
+description = ""
+packages = [
+    { include = "forgepro" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 # Should these be here? Or more like peer dependencies with import errors? Or extras?
 sentry-sdk = "^1.5.1"
 stripe = "^2.65.0"
+
+[tool.poetry.dev-dependencies]
+# Forge includes pytest, black, etc.
+forge = {git = "https://github.com/django-forge/forge.git"}
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

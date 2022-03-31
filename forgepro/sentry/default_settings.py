@@ -1,3 +1,5 @@
+from os import environ
+
 SENTRY_DSN = environ.get("SENTRY_DSN", None)
 SENTRY_RELEASE = environ.get("SENTRY_RELEASE", environ.get("HEROKU_SLUG_COMMIT", None))
 SENTRY_ENVIRONMENT = environ.get("SENTRY_ENVIRONMENT", "production")

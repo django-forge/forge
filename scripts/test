@@ -1,0 +1,10 @@
+#!/bin/sh -e
+export PYTHONPATH="$(pwd):$(pwd)/tests"
+export DJANGO_SETTINGS_MODULE=settings
+export SECRET_KEY=test
+export DATABASE_URL=sqlite:///tests/db.sqlite3
+export BASE_URL=http://localhost:8000
+export DEBUG=true
+
+cd tests
+poetry run pytest . "$@"
