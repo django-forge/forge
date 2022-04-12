@@ -16,7 +16,7 @@ stripe = "^2.65.0"
 
 [tool.poetry.dev-dependencies]
 # Forge includes pytest, black, etc.
-forge1 = "^0.1.0"
+forge = "<1.0.0"
 
 
 [build-system]
