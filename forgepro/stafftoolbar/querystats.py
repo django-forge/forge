@@ -23,7 +23,7 @@ class QueryStats:
     def __str__(self):
         s = f"{self.num_queries} queries in {self.total_time_display}"
         if self.duplicate_queries:
-            s += f" ({len(self.duplicate_queries)} duplicates)"
+            s += f" ({self.num_duplicate_queries} duplicates)"
         return s
 
     def __call__(self, execute, sql, params, many, context):
@@ -72,12 +72,18 @@ class QueryStats:
         duplicates = {k: v for k, v in Counter(sqls).items() if v > 1}
         return duplicates
 
+    @cached_property
+    def num_duplicate_queries(self):
+        # Count the number of "excess" queries by getting how many there
+        # are minus the initial one (and potentially only one required)
+        return sum(self.duplicate_queries.values()) - len(self.duplicate_queries)
+
     def as_summary_dict(self):
         return {
             "summary": str(self),
             "total_time": self.total_time,
             "num_queries": self.num_queries,
-            "num_duplicate_queries": len(self.duplicate_queries),
+            "num_duplicate_queries": self.num_duplicate_queries,
         }
 
     def as_context_dict(self):
