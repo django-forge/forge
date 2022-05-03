@@ -1,6 +1,6 @@
 {% if request.impersonator.is_staff or request.user.is_staff %}
 <div class="py-2 text-sm text-gray-200 bg-black">
-    <div class="container flex justify-between px-4 mx-auto">
+    <div class="{{ stafftoolbar.container_class }} flex justify-between">
         <div class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 mr-1 bi bi-person-badge" viewBox="0 0 16 16">
                 <path d="M6.5 2a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zM11 8a3 3 0 1 1-6 0 3 3 0 0 1 6 0z"/>
