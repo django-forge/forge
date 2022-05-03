@@ -2,7 +2,7 @@
 
 {% block content %}
 {{ block.super }}
-<div class="fixed inset-0 z-50 px-10 py-14 overflow-scroll bg-black/70" data-querystats-bg>
+<div class="fixed inset-0 z-50 px-10 overflow-scroll py-14 bg-black/70" data-querystats-bg>
     <div class="px-4 py-6 text-gray-200 bg-gray-900 rounded-md shadow-lg">
 
         <div class="flex items-center justify-between">
@@ -47,6 +47,10 @@
                     <span class="font-medium">Parameters</span>
                     <pre><code class="font-mono">{{ query.params|pprint }}</code></pre>
                 </div>
+                <details class="mt-3">
+                    <summary>Traceback</summary>
+                    <pre><code class="font-mono text-xs">{{ query.tb }}</code></pre>
+                </details>
             </div>
             {% empty %}
             <div>No queries...</div>
