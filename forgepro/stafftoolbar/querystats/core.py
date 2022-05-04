@@ -8,7 +8,7 @@ from django.utils.functional import cached_property
 
 def get_stack():
     regexp = re.compile(
-        r"^  File \".*\/(threading|socketserver|wsgiref|stafftoolbar\/querystats\/core|django\/template\/base|django\/utils\/decorators|django\/utils\/deprecation|django\/db|django\/utils\/functional|django\/core\/servers|django\/core\/handlers).*\""
+        r"^  File \".*\/(threading|socketserver|wsgiref|gunicorn|whitenoise|sentry_sdk|stafftoolbar\/querystats\/core|django\/template\/base|django\/utils\/decorators|django\/utils\/deprecation|django\/db|django\/utils\/functional|django\/core\/servers|django\/core\/handlers).*\""
     )
 
     lines = []
