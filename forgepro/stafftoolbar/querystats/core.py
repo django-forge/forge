@@ -5,28 +5,47 @@ from collections import Counter
 
 from django.utils.functional import cached_property
 
+IGNORE_STACK_FILES = [
+    "threading",
+    "socketserver",
+    "wsgiref",
+    "gunicorn",
+    "whitenoise",
+    "sentry_sdk",
+    "stafftoolbar/querystats/core",
+    "django/template/base",
+    "django/utils/decorators",
+    "django/utils/deprecation",
+    "django/db",
+    "django/utils/functional",
+    "django/core/servers",
+    "django/core/handlers",
+]
+
 
 def get_stack():
-    regexp = re.compile(
-        r"^  File \".*\/(threading|socketserver|wsgiref|gunicorn|whitenoise|sentry_sdk|stafftoolbar\/querystats\/core|django\/template\/base|django\/utils\/decorators|django\/utils\/deprecation|django\/db|django\/utils\/functional|django\/core\/servers|django\/core\/handlers).*\""
-    )
+    return "".join(tidy_stack(traceback.format_stack()))
 
+
+def tidy_stack(stack):
     lines = []
 
     skip_next = False
 
-    for line in traceback.format_stack():
+    for line in stack:
         if skip_next:
             skip_next = False
             continue
 
-        if regexp.match(line):
+        if line.startswith('  File "') and any(
+            ignore in line for ignore in IGNORE_STACK_FILES
+        ):
             skip_next = True
             continue
 
         lines.append(line)
 
-    return "".join(lines)
+    return lines
 
 
 class QueryStats:
