@@ -24,18 +24,19 @@ def sentry_js(context):
         },
     }
 
-    request = context.get("request", None)
+    if "request" in context:
+        # Use request.user by default (avoids accidental "user" variable confusion)
+        user = getattr(context["request"], "user", None)
+    else:
+        # Get user directly if no request (like in server error context)
+        user = context.get("user", None)
 
-    if (
-        settings.SENTRY_PII_ENABLED
-        and hasattr(request, "user")
-        and request.user.is_authenticated
-    ):
+    if settings.SENTRY_PII_ENABLED and user and user.is_authenticated:
         sentry_context["sentry_init"]["initialScope"] = {
             "user": {
-                "id": request.user.id,
-                "email": request.user.email,
-                "username": request.user.get_username(),
+                "id": user.id,
+                "email": user.email,
+                "username": user.get_username(),
             }
         }
 

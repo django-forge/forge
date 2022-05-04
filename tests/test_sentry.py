@@ -1,6 +1,8 @@
+import sentry_sdk
 from django.contrib.auth import get_user_model
 from django.views.generic import TemplateView
 
+from forgepro.sentry.middleware import SentryFeedbackMiddleware
 from forgepro.sentry.templatetags.sentry import sentry_js
 
 SENTRY_TEST_DSN = "https://publickey@1.ingest.sentry.io/1"
@@ -115,3 +117,22 @@ def test_sentry_release_env(settings, rf):
             "sendDefaultPii": False,
         },
     }
+
+
+def test_sentry_feedback_middleware(settings, client):
+    settings.SENTRY_DSN = SENTRY_TEST_DSN
+
+    sentry_sdk.Hub.current._last_event_id = "test_event_id"  # fake this
+    client.raise_request_exception = False
+    response = client.get("/error/")
+
+    assert response.status_code == 500
+    assert b"Sentry.onLoad" not in response.content
+
+    # # Have to test the middleware directly
+    middleware = SentryFeedbackMiddleware(get_response=lambda request: response)
+    response = middleware(response.request)
+
+    assert response.status_code == 500
+    assert b"Sentry.onLoad" in response.content
+    assert b"Sentry.showReportDialog" in response.content
