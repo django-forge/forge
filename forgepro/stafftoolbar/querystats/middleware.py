@@ -67,6 +67,12 @@ class QueryStatsMiddleware:
 
     @staticmethod
     def is_staff_request(request):
+        if hasattr(request, "impersonator"):
+            # Support for impersonation (still want the real staff user to see the querystats)
+            return (
+                request.impersonator.is_authenticated and request.impersonator.is_staff
+            )
+
         return (
             hasattr(request, "user")
             and request.user.is_authenticated
