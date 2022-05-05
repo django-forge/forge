@@ -8,7 +8,9 @@ IMPERSONATE_KEY = "impersonate"
 
 class ImpersonateStartView(View):
     def get(self, request, *args, **kwargs):
-        if request.user.is_authenticated and can_be_impersonator(request.user):
+        # We *could* already be impersonating, so need to consider that
+        impersonator = getattr(request, "impersonator", request.user)
+        if impersonator and can_be_impersonator(impersonator):
             request.session[IMPERSONATE_KEY] = kwargs["pk"]
             return HttpResponseRedirect(request.GET.get("next", "/"))
 
