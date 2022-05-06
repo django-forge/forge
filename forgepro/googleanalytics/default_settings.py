@@ -1,0 +1,3 @@
+from os import environ
+
+GOOGLEANALYTICS_MEASUREMENT_ID = environ.get("GOOGLEANALYTICS_MEASUREMENT_ID", None)
