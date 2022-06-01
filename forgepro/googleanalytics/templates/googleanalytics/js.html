@@ -5,8 +5,6 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
-  gtag('config', '{{ googleanalytics_measurement_id }}',
-    {% if googleanalytics_user_id %}{'user_id': '{{ googleanalytics_user_id }}'}{% endif %}
-  );
+  gtag('config', '{{ googleanalytics_measurement_id }}'{% if googleanalytics_user_id %},{'user_id': '{{ googleanalytics_user_id }}'}{% endif %});
 </script>
 {% endif %}
