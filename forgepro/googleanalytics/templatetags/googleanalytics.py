@@ -1,6 +1,8 @@
 from django import template
 from django.conf import settings
 
+from ..utils import user_id_from_request
+
 register = template.Library()
 
 
@@ -11,10 +13,6 @@ def googleanalytics_js(context):
     }
 
     if "request" in context:
-        request = context["request"]
-        # Analytics will be tied to the impersonator if we are one
-        user = getattr(request, "impersonator", request.user)
-        if user.is_authenticated:
-            ctx["googleanalytics_user_id"] = user.pk
+        ctx["googleanalytics_user_id"] = user_id_from_request(context["request"])
 
     return ctx
