@@ -6,7 +6,7 @@ from typing import List
 import requests
 from django.conf import settings
 
-from .utils import user_id_from_request
+from .utils import user_id, user_id_from_request
 
 logger = logging.getLogger(__name__)
 
@@ -32,7 +32,7 @@ class GoogleAnalyticsEvent(object):
 
 
 def send_events(
-    *, events: List[GoogleAnalyticsEvent], request=None, validate=None
+    *, events: List[GoogleAnalyticsEvent], user=None, request=None, validate=None
 ) -> None:
     if not settings.GOOGLEANALYTICS_MEASUREMENT_ID:
         # Return silently - not expected to be tracking anything
@@ -60,7 +60,7 @@ def send_events(
         },
         json={
             "client_id": str(uuid.uuid4()),
-            "user_id": user_id_from_request(request),
+            "user_id": user_id(user) if user else user_id_from_request(request),
             "events": [event.as_dict() for event in events],
         },
     )
