@@ -33,6 +33,10 @@
                     // Create the performance observer.
                     const po = new PerformanceObserver((list) => {
                         for (const entry of list.getEntries()) {
+                            if (!entry.serverTiming) {
+                                console.warn("Server timing not available for querystats.")
+                                return;
+                            }
                             for (const timing of entry.serverTiming) {
                                 if (timing.name === "querystats") {
                                     const el = document.querySelector('[data-querystats-summary]');
