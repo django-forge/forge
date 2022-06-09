@@ -1,5 +1,5 @@
 {% if request.user.is_staff or request.impersonator.is_staff %}
-<div class="py-2 text-sm text-gray-200 bg-black">
+<div class="py-2 text-sm text-zinc-200 bg-zinc-900">
     <div class="{{ stafftoolbar.container_class }} flex justify-between">
         <div class="flex items-center">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="w-4 h-4 mr-1 bi bi-person-badge" viewBox="0 0 16 16">
@@ -23,6 +23,8 @@
         </div>
         <div class="flex items-center space-x-4">
             {% if querystats_enabled %}{% include "querystats/stafftoolbar.html" %}{% endif %}
+
+            {% if requestlog_enabled %}{% include "requestlog/stafftoolbar.html" %}{% endif %}
 
             <div class="flex items-center space-x-3">
                 {% for link in stafftoolbar.links %}
