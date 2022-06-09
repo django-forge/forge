@@ -1,4 +1,4 @@
-from forgepro.stafftoolbar.querystats.core import tidy_stack
+from forgepro.querystats.core import tidy_stack
 
 
 def test_tidy_stack():

@@ -12,7 +12,7 @@ IGNORE_STACK_FILES = [
     "gunicorn",
     "whitenoise",
     "sentry_sdk",
-    "stafftoolbar/querystats/core",
+    "querystats/core",
     "django/template/base",
     "django/utils/decorators",
     "django/utils/deprecation",

@@ -110,6 +110,6 @@ class QueryStatsMiddleware:
                     "querystats_template_name"
                 ] = response.template_name
 
-                response.template_name = "stafftoolbar/querystats.html"
+                response.template_name = "querystats/querystats.html"
 
         return response
