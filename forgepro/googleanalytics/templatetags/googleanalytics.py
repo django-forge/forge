@@ -8,6 +8,9 @@ register = template.Library()
 
 @register.inclusion_tag("googleanalytics/js.html", takes_context=True)
 def googleanalytics_js(context):
+    if settings.DEBUG:
+        return {}
+
     ctx = {
         "googleanalytics_measurement_id": settings.GOOGLEANALYTICS_MEASUREMENT_ID,
     }
