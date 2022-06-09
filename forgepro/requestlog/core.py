@@ -73,7 +73,10 @@ class RequestLog:
         sorted_filenames = sorted(filenames, reverse=True)
         for filename in sorted_filenames[settings.REQUESTLOG_KEEP_LATEST :]:
             path = os.path.join(storage_path, filename)
-            os.remove(path)
+            try:
+                os.remove(path)
+            except FileNotFoundError:
+                pass
 
     @staticmethod
     def clear():
@@ -84,7 +87,10 @@ class RequestLog:
         filenames = os.listdir(storage_path)
         for filename in filenames:
             path = os.path.join(storage_path, filename)
-            os.remove(path)
+            try:
+                os.remove(path)
+            except FileNotFoundError:
+                pass
 
     def save(self):
         storage_path = self.storage_path()
