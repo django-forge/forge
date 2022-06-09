@@ -26,13 +26,16 @@ class RequestLog:
 
         if method == "GET":
             # Params are in absolute uri
-            request_data = {}
+            request_data = data["request"]["body"]
         elif method in ("POST", "PUT", "PATCH"):
-            request_data = data["request"]["querydict"]
+            if data["request"]["querydict"]:
+                request_data = data["request"]["querydict"]
+            else:
+                request_data = data["request"]["body"]
 
         # Cookies need to be passed as a dict, so that
         # they are passed through redirects
-        data["request"]["headers"].pop("Cookie")
+        data["request"]["headers"].pop("Cookie", None)
 
         response = requests.request(
             method,
