@@ -133,8 +133,13 @@ class RequestLog:
 
     @staticmethod
     def response_as_dict(response):
+        try:
+            content = response.content.decode("utf-8")
+        except AttributeError:
+            content = "<streaming_content>"
+
         return {
             "status_code": response.status_code,
             "headers": dict(response.headers),
-            "content": response.content.decode("utf-8"),
+            "content": content,
         }
