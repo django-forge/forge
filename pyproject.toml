@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "forge-pro"
-version = "0.0.0"
+version = "0.1.0"
 authors = ["Dave Gaeddert <dave.gaeddert@dropseed.dev>"]
 readme = "README.md"
 description = ""
