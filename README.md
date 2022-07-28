@@ -6,7 +6,14 @@ Welcome to Forge Pro! For up-to-date docs, visit https://www.forgepackages.com/d
 
 If you have a general question about Forge, Django, or your own project, feel free to start a [discussion](https://github.com/forgepackages/forge-pro/discussions).
 
-For specific bugs where the solution is 80% figured out, you can open an [issue](https://github.com/forgepackages/forge-pro/issues).
+The individual Forge Pro packages are in the following repos:
 
-PRs are absolutely welcome, but if it's for a bug, please open an issue first to make sure there aren't any problems with the proposed solution.
-And if you want to contribute a feature, please start a discussion about so we can get on the same page before anyone spends time working on it.
+- [forgepackages/forge-stafftoolbar](https://github.com/forgepackages/forge-stafftoolbar)
+- [forgepackages/forge-stripe](https://github.com/forgepackages/forge-stripe)
+- [forgepackages/forge-sentry](https://github.com/forgepackages/forge-sentry)
+- [forgepackages/forge-requestlog](https://github.com/forgepackages/forge-requestlog)
+- [forgepackages/forge-querystats](https://github.com/forgepackages/forge-querystats)
+- [forgepackages/forge-impersonate](https://github.com/forgepackages/forge-impersonate)
+- [forgepackages/forge-googleanalytics](https://github.com/forgepackages/forge-googleanalytics)
+
+Issues and discussions can be opened on this repo, and we can transfer them to individual repos if we need to.
