@@ -4,7 +4,7 @@
 
 Welcome to Forge Pro! For up-to-date docs, visit https://www.forgepackages.com/docs/pro/.
 
-If you have a general question about Forge, Django, or your own project, feel free to start a [discussion](https://github.com/forgepackages/forge-pro/discussions).
+If you have a general question about Forge, Django, or your own project, feel free to start a [discussion](https://github.com/forgepackages/forge/discussions).
 
 The individual Forge Pro packages are in the following repos:
 
