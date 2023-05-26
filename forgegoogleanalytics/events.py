@@ -53,6 +53,13 @@ def send_events(
     else:
         url = "https://www.google-analytics.com/mp/collect"
 
+    if user:
+        user_id = user_id(user)
+    elif request:
+        user_id = user_id_from_request(request)
+    else:
+        user_id = None
+
     response = requests.post(
         url,
         params={
@@ -61,7 +68,7 @@ def send_events(
         },
         json={
             "client_id": str(uuid.uuid4()),
-            "user_id": user_id(user) if user else user_id_from_request(request),
+            "user_id": user_id,
             "events": [event.as_dict() for event in events],
         },
     )
