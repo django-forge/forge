@@ -1,3 +1,6 @@
+> [!IMPORTANT]
+> This project has been archived in favor of [Plain](https://github.com/dropseed/plain)!
+
 # Forge
 
 <img height="100" width="100" src="https://user-images.githubusercontent.com/649496/176748343-3829aad8-4bcf-4c25-bb5d-6dc1f796fac0.png" align="right" />
