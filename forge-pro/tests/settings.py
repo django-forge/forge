@@ -1,0 +1,9 @@
+from forge.default_settings import *
+
+from forgepro.default_settings import FORGEPRO_APPS, FORGEPRO_MIDDLEWARE
+
+INSTALLED_APPS = INSTALLED_APPS + FORGEPRO_APPS
+
+MIDDLEWARE = MIDDLEWARE + FORGEPRO_MIDDLEWARE
+
+AUTH_USER_MODEL = "auth.User"

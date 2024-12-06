@@ -1,0 +1,22 @@
+name: test
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - run: pipx install poetry
+    - uses: actions/setup-python@v4
+      with:
+        python-version: "3.9"
+        cache: poetry
+    - name: Install dependencies
+      env:
+        POETRY_HTTP_BASIC_FORGEPACKAGES_USERNAME: ${{ secrets.FORGEPACKAGES_PROJECT }}
+        POETRY_HTTP_BASIC_FORGEPACKAGES_PASSWORD: ${{ secrets.FORGEPACKAGES_TOKEN }}
+      run: poetry install
+    - name: Test
+      run: ./scripts/test

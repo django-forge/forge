@@ -1,0 +1,31 @@
+[tool.poetry]
+name = "forge-pro"
+version = "0.2.0"
+authors = ["Dave Gaeddert <dave.gaeddert@dropseed.dev>"]
+readme = "README.md"
+description = ""
+packages = [
+    { include = "forgepro" },
+]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+forge-stafftoolbar = "<1.0.0"
+forge-stripe = "<1.0.0"
+forge-sentry = "<1.0.0"
+forge-requestlog = "<1.0.0"
+forge-querystats = "<1.0.0"
+forge-impersonate = "<1.0.0"
+forge-googleanalytics = "<1.0.0"
+
+[tool.poetry.dev-dependencies]
+# Forge includes pytest, black, etc.
+forge = "<1.0.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "forgepackages"
+url = "https://pypi.forgepackages.com/"
