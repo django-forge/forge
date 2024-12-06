@@ -1,0 +1,17 @@
+#!/bin/sh -e
+BOLD=$(tput bold)
+NORMAL=$(tput sgr0)
+
+echo "${BOLD}Installing dependencies with Poetry${NORMAL}"
+POETRY_VIRTUALENVS_IN_PROJECT=true poetry install
+
+if [ ! -f .env ]; then
+    echo ""
+    echo "${BOLD}Creating development .env from .env.example${NORMAL}"
+    cp .env.example .env
+    cat .env
+fi
+
+echo ""
+echo "${BOLD}Installing git pre-commit hook${NORMAL}"
+poetry run forge pre-commit --install

@@ -1,0 +1,40 @@
+[tool.poetry]
+name = "project"
+version = "0.0.0"
+description = ""
+authors = []
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+Django = "^4.1.1"
+django-widget-tweaks = "^1.4.12"
+dj-database-url = "^1.0.0"
+whitenoise = "^6.0.0"
+python-dotenv = "*"
+redis = "^4.2.2"
+hiredis = "^2.0.0"
+ipython = "^8.5.0"
+
+forge-logging = "^1.0.0"
+forge-heroku = "^1.0.0"
+forge-tailwind = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+forge-work = "^1.0.0"
+forge-test = "^1.0.0"
+forge-format = "^1.0.0"
+forge-precommit = "^1.0.0"
+forge-db = "^1.0.0"
+
+[tool.ruff]
+ignore = [
+    "E501",  # Never enforce `E501` (line length violations).
+]
+extend-select = [
+    "I",  # Enable isort
+]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
