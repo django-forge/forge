@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="w-full max-w-2xl mx-auto overflow-hidden bg-white rounded shadow">
+    <div class="px-4 py-5 bg-white border-b border-gray-200 sm:px-6">
+        <h1 class="text-lg font-medium leading-6 text-gray-900">Deploy key for "{{ project }}"</h1>
+    </div>
+    <div class="p-4 sm:px-6">
+        <p class="mt-4 text-sm text-gray-800">
+            This deploy key provides access to the forgepackages/forge-pro repo in Heroku and GitHub Actions.
+            When you're working locally,
+            git will automatically use your personal credentials.
+            Using deploy keys for shared environments means you don't have to create a personal access token
+            on behalf of a specific team member (which would have more permissions than it needs anyways).
+        </p>
+        <a class="inline-block mt-4 text-sm text-blue-500 hover:underline" href="https://www.forgepackages.com/docs/pro/">Adding your deploy key to Heroku and GitHub Actions →</a>
+        <pre><code class="block p-4 mt-6 text-sm text-gray-300 bg-gray-900 rounded" style="word-break: break-all;">{{ project.pro_private_key }}</code></pre>
+    </div>
+</div>
+
+{% endblock %}

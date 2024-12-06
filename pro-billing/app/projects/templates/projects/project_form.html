@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="w-full max-w-lg mx-auto overflow-hidden bg-white rounded shadow">
+    <div class="px-4 py-5 bg-white border-b border-gray-200 sm:px-6">
+        <h1 class="text-lg font-medium leading-6 text-gray-900">Start a new project</h1>
+    </div>
+    <div class="p-4 sm:px-6">
+        <form method="post">
+            {% csrf_token %}
+            <div class="flex items-start">
+                <div class="flex-grow">
+                    {{ form }}
+                </div>
+                <div class="flex flex-col">
+                    <label class="text-sm">&nbsp;</label>
+                    <button type="submit" class="px-4 py-2 mt-1 ml-2 text-white bg-orange-500 rounded-md hover:bg-orange-600">Create →</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    {% for package in object_list %}
+    <a href="{% url 'packages:pypi_detail' package.name %}">{{ package.name }}</a>
+    {% endfor %}
+  </body>
+</html>

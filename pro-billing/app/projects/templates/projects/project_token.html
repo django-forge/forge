@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="w-full max-w-4xl mx-auto overflow-hidden bg-white rounded shadow">
+    <div class="px-4 py-5 bg-white border-b border-gray-200 sm:px-6">
+        <h1 class="text-lg font-medium leading-6 text-gray-900">Token for "{{ project }}"</h1>
+    </div>
+    <div class="p-4 sm:px-6">
+        <p class="mt-4 text-sm text-gray-800">
+            To install private packages, use <code>https://pypi.forgepackages.com/</code> as an additional package repo.
+            In Poetry for example, you can add this section to your <code>pyproject.toml</code>:
+        </p>
+
+        <pre><code class="block p-4 mt-3 text-sm text-gray-300 bg-gray-900 rounded" style="word-break: break-all;">[[tool.poetry.source]]
+name = "forgepackages"
+url = "https://pypi.forgepackages.com/"
+</code></pre>
+
+        <p class="mt-4 text-sm text-gray-800">
+            In <span class="font-bold">development</span>, use your personal credentials to authenticate your entire machine:
+        </p>
+        <pre><code class="block p-4 mt-3 text-sm text-gray-300 bg-gray-900 rounded" style="word-break: break-all;">poetry config http-basic.forgepackages {{ request.user.username }} {{ request.user.packages_token }}</code></pre>
+
+        <p class="mt-4 text-sm text-gray-800">
+            In <span class="font-bold">Heroku</span>, use the project credentials:
+        </p>
+        <pre><code class="block p-4 mt-3 text-sm text-gray-300 bg-gray-900 rounded" style="word-break: break-all;">heroku config:set FORGEPACKAGES_AUTH="{{ project.name }}:{{ project.packages_token }}"</code></pre>
+
+        <p class="mt-4 text-sm text-gray-800">
+            In <span class="font-bold">GitHub Actions</span>, use the project credentials (saving them as "secrets" on your repo first) in <code>test.yml</code>:
+        </p>
+        {% verbatim %}
+        <pre><code class="block p-4 mt-3 text-sm text-gray-300 bg-gray-900 rounded" style="word-break: break-all;">    # previous steps
+    - name: Install dependencies
+      env:
+        POETRY_HTTP_BASIC_FORGEPACKAGES_USERNAME: ${{ secrets.FORGEPACKAGES_PROJECT }}
+        POETRY_HTTP_BASIC_FORGEPACKAGES_PASSWORD: ${{ secrets.FORGEPACKAGES_TOKEN }}
+      run: poetry install</code></pre>
+        {% endverbatim %}
+
+        <a class="inline-block mt-4 text-sm text-blue-500 hover:underline" href="https://www.forgepackages.com/docs/pro/">More information can be found in the docs →</a>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block footer_scripts %}
+<script src="https://unpkg.com/@dropseed/codeplus@0.6.3/dist/browser.js"></script>
+<script>
+window.addEventListener("load", function() {
+    new Codeplus({
+        copyButtonClass: "items-center flex hover:bg-gray-700 text-gray-100 rounded border border-gray-200 px-2 py-1 text-sm",
+    }).render();
+});
+</script>
+{% endblock %}

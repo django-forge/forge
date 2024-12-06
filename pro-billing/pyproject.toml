@@ -1,0 +1,44 @@
+[tool.poetry]
+name = "project"
+version = "0.0.0"
+description = ""
+authors = []
+
+[tool.poetry.dependencies]
+python = "^3.9"
+
+PyJWT = "^2.3.0"
+cryptography = "^37.0.2"
+django-hosts = "^5.1"
+django = "^4.1.5"
+django-widget-tweaks = "^1.4.12"
+dj-database-url = "^1.2.0"
+whitenoise = "^6.3.0"
+redis = "^4.4.2"
+hiredis = "^2.1.1"
+ipython = "^8.9.0"
+python-dotenv = "^0.21.1"
+
+forge-pro = "<1.0.0"
+forge-logging = "^1.0.0"
+forge-heroku = "^1.0.0"
+forge-tailwind = "^1.0.0"
+
+[tool.poetry.group.dev.dependencies]
+forge-work = "^1.0.0"
+forge-test = "^1.0.1"
+forge-format = "^1.0.0"
+forge-precommit = "^1.2.0"
+forge-db = "^1.0.0"
+
+[tool.ruff]
+# Never enforce `E501` (line length violations).
+ignore = ["E501"]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[[tool.poetry.source]]
+name = "forgepackages"
+url = "https://pypi.forgepackages.com/"

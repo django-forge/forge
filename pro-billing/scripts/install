@@ -1,0 +1,4 @@
+#!/bin/sh -e
+POETRY_VIRTUALENVS_IN_PROJECT=true poetry install
+
+poetry run forge pre-commit --install

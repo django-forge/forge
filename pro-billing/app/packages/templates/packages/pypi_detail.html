@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    {% for asset in assets %}
+    <a href="{% url 'packages:pypi_filename' object.name asset.filename %}">{{ asset.filename }}</a>
+    {% endfor %}
+  </body>
+</html>

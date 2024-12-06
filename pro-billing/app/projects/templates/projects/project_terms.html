@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="w-full max-w-2xl mx-auto overflow-hidden bg-white rounded shadow">
+    <div class="px-4 py-5 bg-white border-b border-gray-200 sm:px-6">
+        <h1 class="text-lg font-medium leading-6 text-gray-900">License terms for "{{ project }}"</h1>
+    </div>
+    <div class="p-4 sm:px-6">
+        <p class="mt-4 text-sm text-gray-800">
+            Make sure you are aware of the terms.
+            In short, you don't have permission to redistribute the Forge Pro code.
+            If you have licensing questions or are purchasing on behalf of a team or organization, <a href="https://www.forgepackages.com/contact/" class="text-indigo-600 hover:underline">contact us</a>.
+        </p>
+        <div class="p-2.5 overflow-y-scroll border border-gray-200 rounded bg bg-gray-50 h-[34rem] mt-8">
+        {% include "projects/license_terms.html" %}
+        </div>
+        <form method="post" class="mt-10">
+            {% csrf_token %}
+            {{ form }}
+
+            <div class="flex items-center mt-6">
+                <input id="terms_accepted" type="checkbox" required class="w-4 h-4 text-indigo-600 border-gray-300 rounded focus:ring-indigo-500">
+                <label for="terms_accepted" class="ml-2 text-sm font-medium text-gray-700">I accept the license terms</label>
+            </div>
+
+            <button type="submit" class="block w-full px-4 py-2 mt-8 text-white bg-orange-500 rounded-md hover:bg-orange-600">Continue</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}

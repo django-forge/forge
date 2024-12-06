@@ -1,0 +1,19 @@
+# Local development files
+/.env
+/.forge
+
+# Bundled assets
+/app/static/dist
+/app/staticfiles
+
+# Python
+/.venv
+__pycache__/
+*.py[cod]
+*$py.class
+
+# JS
+/node_modules
+
+# OS files
+.DS_Store
