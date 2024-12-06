@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+
+ORG="forgepackages"
+BRANCH="master"
+
+# Make a temp directory
+mkdir -p tmp
+cd tmp || exit 1
+
+# Get all repos for the org
+repos=$(gh repo list $ORG --json name -q '.[].name')
+
+cd ..
+
+for repo in $repos; do
+    echo "Processing $repo..."
+    # Clone into a temporary spot
+    gh repo clone "$ORG/$repo" "tmp/$repo"
+
+    # Add as a subtree in the current repo
+    git subtree add --prefix="$repo" "tmp/$repo" "$BRANCH"
+
+    # Clean up
+    rm -rf "tmp/$repo"
+done
+
+# Remove the tmp directory if empty
+rmdir tmp 2>/dev/null
